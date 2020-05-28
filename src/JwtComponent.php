@@ -1,9 +1,8 @@
 <?php 
 
-use CApplicationComponent;
 use fidelize\JwtAuthKeys\JwtAuth;
 
-class JwtComponent extends CApplicationComponent 
+class JwtComponent extends \CApplicationComponent 
 {
     public $secret;
     public $keysDirectory;
