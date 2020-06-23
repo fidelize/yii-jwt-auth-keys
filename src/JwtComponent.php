@@ -1,5 +1,7 @@
 <?php 
 
+namespace YiiJwtAuthKeys;
+
 use fidelize\JwtAuthKeys\JwtAuth;
 
 class JwtComponent extends \CApplicationComponent 

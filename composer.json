@@ -1,13 +1,15 @@
 {
     "name": "fidelize/yii-jwt-auth-keys",
     "description": "Yii Jwt Auth keys",
+    "type": "package",
+    "license": "GPL-3.0",
     "require": {
         "yiisoft/yii": "^1.1",
         "fidelize/jwt-auth-keys": "^0.2"
     },
     "autoload": {
         "psr-4": {
-            "fidelize\\YiiJwtAuthKeys\\": "src/"
+            "YiiJwtAuthKeys\\": "src"
         }
     },
     "repositories": [

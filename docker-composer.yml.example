@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  php:
+    image: php:7.1-fpm
+    container_name: php-yii
+    restart: always
+    command: bash -c php-fpm
+    volumes:
+      - ./:/var/www/html
