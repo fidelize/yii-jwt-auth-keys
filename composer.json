@@ -6,11 +6,22 @@
     "require": {
         "php": ">=8.3",
         "yiisoft/yii": "^1.1",
-        "fidelize/jwt-auth-keys": "^0.2"
+        "fidelize/jwt-auth-keys": "dev-SQPT-3626"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^10.5",
+        "rector/rector": "^2.6"
     },
     "autoload": {
         "psr-4": {
-            "YiiJwtAuthKeys\\": "src"
+            "YiiJwtAuthKeys\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "YiiJwtAuthKeys\\Tests\\": "tests/"
         }
     },
     "repositories": [
@@ -18,5 +29,15 @@
             "type": "vcs",
             "url": "https://github.com/fidelize/jwt-auth-keys.git"
         }
-    ]
+    ],
+    "scripts": {
+        "cs:fix": "vendor/bin/php-cs-fixer fix",
+        "cs:check": "vendor/bin/php-cs-fixer fix --dry-run --diff",
+        "phpstan": "vendor/bin/phpstan analyse --no-progress",
+        "rector": "vendor/bin/rector process",
+        "rector:check": "vendor/bin/rector process --dry-run",
+        "test": "vendor/bin/phpunit --no-coverage"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

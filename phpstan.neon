@@ -1,0 +1,8 @@
+parameters:
+    level: 10
+    treatPhpDocTypesAsCertain: false
+    paths:
+        - src
+    bootstrapFiles:
+        - phpstan-stubs/yii.php
+    ignoreErrors: []

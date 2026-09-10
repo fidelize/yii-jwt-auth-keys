@@ -1,32 +1,53 @@
-<?php 
+<?php
+
+declare(strict_types=1);
 
 namespace YiiJwtAuthKeys;
 
+use CApplicationComponent;
 use fidelize\JwtAuthKeys\JwtAuth;
 
-class JwtComponent extends \CApplicationComponent 
+class JwtComponent extends CApplicationComponent
 {
-    public $secret;
-    public $keysDirectory;
-    protected $jwtAuth;
+    public ?string $secret = null;
+    public ?string $keysDirectory = null;
 
-    public function init()
+    protected ?JwtAuth $jwtAuth = null;
+
+    public function init(): void
     {
         $this->jwtAuth = new JwtAuth();
-        $this->jwtAuth->setSecret($this->secret);
-        $this->jwtAuth->setKeysDirectory($this->keysDirectory);
-        
+
+        if ($this->secret !== null) {
+            $this->jwtAuth->setSecret($this->secret);
+        }
+
+        if ($this->keysDirectory !== null) {
+            $this->jwtAuth->setKeysDirectory($this->keysDirectory);
+        }
+
         parent::init();
     }
 
-    public function encode($payload)
+    /**
+     * @param array<string, mixed>|string $payload
+     */
+    public function encode(array|string $payload): string
     {
-        return $this->jwtAuth->encode($payload);
+        return $this->getJwtAuth()->encode($payload);
     }
 
-    public function decode($msg)
+    public function decode(string $msg): mixed
     {
-        return $this->jwtAuth->decode($msg);
+        return $this->getJwtAuth()->decode($msg);
     }
 
+    protected function getJwtAuth(): JwtAuth
+    {
+        if ($this->jwtAuth === null) {
+            throw new \RuntimeException('JwtAuth is not initialized.');
+        }
+
+        return $this->jwtAuth;
+    }
 }

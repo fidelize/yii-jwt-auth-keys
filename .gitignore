@@ -1,2 +1,9 @@
 docker-compose.yml
 vendor/
+phpunit.xml
+.phpunit.result.cache
+.phpunit.cache
+.php-cs-fixer.cache
+.DS_Store
+.idea
+AGENTS.md
